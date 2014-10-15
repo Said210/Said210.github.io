@@ -1,4 +1,4 @@
-angular.module('todoApp', [ 'ngAnimate', 'ngMaterial' ])
+angular.module('todoApp', [])
   .controller('TodoController', ['$scope', function($scope) {
     $scope.todos = [
       {text:'Try Catch', done:false},
