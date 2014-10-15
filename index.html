@@ -1,41 +1,92 @@
 <!doctype html>
 <html ng-app="todoApp">
   <head>
+  <meta charset="utf-8">
   <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
     <link rel="stylesheet" href="bower_components/angular-material/angular-material.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0/angular.min.js"></script>
-
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0/angular.min.js"></script>
+    
     <script src="bower_components/angular-animate/angular-animate.js"></script>
     <script src="bower_components/hammerjs/hammer.js"></script>
     <script src="bower_components/angular-material/angular-material.js"></script>
     <script src="todo.js"></script>
     <style>
-    .done-true {
-		text-decoration: line-through;
-		color: grey;
-	}
-</style>
+    
+  </style>
+  <script>
+    $(document).ready(function(){
+      function updateText(event){
+        var input=$(this);
+        setTimeout(function(){
+          var val=input.val();
+          if(val!="")
+            input.parent().addClass("floating-placeholder-float");
+          else
+            input.parent().removeClass("floating-placeholder-float");
+        },1)
+      }
+      $(".floating-placeholder input").keydown(updateText);
+      $(".floating-placeholder input").change(updateText);
+    });
+  </script>
   </head>
   <body>
-    <h1>Todo</h1>
-    
+
     <div ng-controller="TodoController">
-    <material-card>
-      <span>{{remaining()}} de {{todos.length}} restantes</span>
-      [ <a href="" ng-click="archive()">Remover</a> ]
-      <ul class="unstyled">
-        <li ng-repeat="todo in todos">
-          <input type="checkbox" ng-model="todo.done">
-          <span class="done-{{todo.done}}">{{todo.text}}</span>
-        </li>
-      </ul>
-      <form ng-submit="addTodo()">
-        <input type="text" ng-model="todoText"  size="30"
-               placeholder="Aniadir cosa por hacer">
-        <input class="btn-primary" type="submit" value="add">
-      </form>
-      </material-card>
-    </div>
-    
+   
+    <material-toolbar class="material-theme-light">
+      <h2 class="material-toolbar-tools">
+        <span><b>Said Pelaez</b></span>
+        <span>Asesorias de java</span>
+        <span>Temas vistos</span>
+      </h2>
+    </material-toolbar>
+    <material-content>
+    <br>
+      <material-card>
+      
+        <h1>Lista de temas</h1>
+      
+        <span>{{remaining()}} de {{todos.length}} restantes</span>
+        [ <a href="" ng-click="archive()">Remover</a> ]
+        <ul class="unstyled" type="none">
+          <li ng-repeat="todo in todos | filter:todoText">
+            <input type="checkbox" ng-model="todo.done" name="{{todo.text}}" id="{{todo.text}}">
+            
+            <label for="{{todo.text}}"><span ng-if="todo.done == true"><i class="fa fa-check-square-o"></i></span>
+            <span ng-if="todo.done == false"><i class="fa fa-square-o"></i></span> {{todo.text}}</label>
+          <a href="{{todo.url}}" target="_blank" style="display:inline-block"><i class="fa fa-link"></i></a>
+          </li>
+        </ul>
+           <div class="floating-placeholder">
+            <input ng-model="todoText" name="Search" type="text" />
+            <label for="Search">Buscar en temas</label>
+          </div>
+        </material-card>
+        <br>
+        <material-card>
+        <h1>Temas vistos</h1>
+          <ul type="none">
+            <li ng-repeat="item in doneThings | filter:doneSearch" class="done-elements">
+              <i class="fa fa-check-square-o"></i> <span>{{item.text}} <a href="{{todo.url}}" target="_blank" style="display:inline-block"><i class="fa fa-link"></i></a></span>
+            </li>
+          </ul>
+          <div class="floating-placeholder">
+            <input ng-model="doneSearch" name="doneSearch" type="text" />
+            <label for="doneSearch">Buscar en Temas vistos</label>
+          </div>
+        </material-card>
+        
+        <material-card align="center">
+          <a href="http://github.com/Said210" style="color:#999; text-decorate:none">
+            <h2>Github</h2>
+          </a>
+        </material-card>
+      </div>
+    </material-content>
+
   </body>
 </html>

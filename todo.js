@@ -1,9 +1,15 @@
 angular.module('todoApp', [])
   .controller('TodoController', ['$scope', function($scope) {
     $scope.todos = [
-      {text:'Try Catch', done:false},
-      {text:'Archivos', done:false},
-      {text:'Repaso', done:false}];
+      {text:'Archivos', done:false, url:'https://github.com/Said210/Asesorias-Java/tree/master/files'},
+      {text:'Repaso', done:false, url: '#'},
+      {text:'private, public y protected', done:false, url: '#'},
+      {text:'Introducción a las REGEX', done:false, url: '#'}];
+     $scope.doneThings = [
+      {text:'Try Catch', url:'https://github.com/Said210/Asesorias-Java/tree/master/files'},
+      {text:'Batalla Naval', url:'https://github.com/Said210/Asesorias-Java/tree/master/Batalla'},
+      {text:'Ahorcado', url:'#'},
+      {text:'Arrglos Lineales', url:'#'}];
  
     $scope.addTodo = function() {
       $scope.todos.push({text:$scope.todoText, done:false});
@@ -25,4 +31,38 @@ angular.module('todoApp', [])
         if (!todo.done) $scope.todos.push(todo);
       });
     };
-  }]);
+  }])
+  .directive('tfFloat', function() {
+    return {
+      restrict: 'E',
+      replace: true,
+      scope : {
+        fid : '@?',
+        value : '='
+      },
+      compile : function() {
+        return {
+          pre : function(scope, element, attrs) {
+            // transpose `disabled` flag
+            if ( angular.isDefined(attrs.disabled) ) {
+              element.attr('disabled', true);
+              scope.isDisabled = true;
+            }
+
+            // transpose the `label` value
+            scope.label = attrs.label || "";
+            scope.fid = scope.fid || scope.label;
+
+            // transpose optional `type` and `class` settings
+            element.attr('type', attrs.type || "text");
+            element.attr('class', attrs.class );
+          }
+        }
+      },
+      template:
+        '<material-input-group ng-disabled="isDisabled">' +
+          '<label for="{{fid}}">{{label}}</label>' +
+          '<material-input id="{{fid}}" ng-model="value">' +
+        '</material-input-group>'
+    };
+  });
