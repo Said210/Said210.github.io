@@ -1,7 +1,6 @@
 angular.module('todoApp', [])
   .controller('TodoController', ['$scope', function($scope) {
     $scope.todos = [
-      {text:'Archivos', done:false, url:'https://github.com/Said210/Asesorias-Java/tree/master/files'},
       {text:'Repaso', done:false, url: '#'},
       {text:'private, public y protected', done:false, url: '#'},
       {text:'Introducción a las REGEX', done:false, url: '#'}];
