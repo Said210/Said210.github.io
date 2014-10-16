@@ -3,7 +3,7 @@ angular.module('todoApp', [])
     $scope.todos = [
       {text:'Repaso', done:false, url: '#'},
       {text:'private, public y protected', done:false, url: '#'},
-      {text:'Introducción a las REGEX', done:false, url: '#'}];
+      {text:'Validaciones', done:false, url: '#'}];
      $scope.doneThings = [
       {text:'Try Catch', url:'https://github.com/Said210/Asesorias-Java/tree/master/files'},
       {text:'Batalla Naval', url:'https://github.com/Said210/Asesorias-Java/tree/master/Batalla'},
