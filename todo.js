@@ -7,7 +7,9 @@ angular.module('todoApp', [])
      $scope.doneThings = [
       {text:'Try Catch', url:'https://github.com/Said210/Asesorias-Java/tree/master/files'},
       {text:'Batalla Naval', url:'https://github.com/Said210/Asesorias-Java/tree/master/Batalla'},
-      {text:'Ahorcado', url:'#'},
+      {text:'Ahorcado', url:'https://github.com/Said210/Asesorias-Java/tree/master/Ahorcado'},
+      {text:'Gato', url:'https://github.com/Said210/Asesorias-Java/tree/master/Gato'},
+      {text:'Herencia', url:'https://github.com/Said210/Asesorias-Java/tree/master/herencia'},
       {text:'Arrglos Lineales', url:'#'}];
  
     $scope.addTodo = function() {
