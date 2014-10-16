@@ -58,7 +58,7 @@
             
             <label for="{{todo.text}}"><span ng-if="todo.done == true"><i class="fa fa-check-square-o"></i></span>
             <span ng-if="todo.done == false"><i class="fa fa-square-o"></i></span> {{todo.text}}</label>
-          <a href="{{todo.url}}" target="_blank" style="display:inline-block"><i class="fa fa-link"></i></a>
+          <a ng-if="todo.url!='#'" href="{{todo.url}}" target="_blank" style="display:inline-block"><i class="fa fa-link"></i></a>
           </li>
         </ul>
            <div class="floating-placeholder">
@@ -71,7 +71,7 @@
         <h1>Temas vistos</h1>
           <ul type="none">
             <li ng-repeat="item in doneThings | filter:doneSearch" class="done-elements">
-              <i class="fa fa-check-square-o"></i> <span>{{item.text}} <a href="{{todo.url}}" target="_blank" style="display:inline-block"><i class="fa fa-link"></i></a></span>
+              <i class="fa fa-check-square-o"></i> <span>{{item.text}} <a ng-if="item.url!='#'" href="{{todo.url}}" target="_blank" style="display:inline-block"><i class="fa fa-link"></i></a></span>
             </li>
           </ul>
           <div class="floating-placeholder">
