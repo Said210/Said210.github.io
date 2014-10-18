@@ -2,7 +2,7 @@ angular.module('todoApp', [])
   .controller('TodoController', ['$scope', function($scope) {
     $scope.todos = [
       {text:'Repaso', done:false, url: '#'},
-      {text:'private, public y protected', done:false, url: '#'},
+      {text:'Que es un ArrayList', done:false, url: '#'},
       {text:'Validaciones', done:false, url: '#'}];
      $scope.doneThings = [
       {text:'Try Catch', url:'https://github.com/Said210/Asesorias-Java/tree/master/files'},
@@ -10,7 +10,8 @@ angular.module('todoApp', [])
       {text:'Ahorcado', url:'https://github.com/Said210/Asesorias-Java/tree/master/Ahorcado'},
       {text:'Gato', url:'https://github.com/Said210/Asesorias-Java/tree/master/Gato'},
       {text:'Herencia', url:'https://github.com/Said210/Asesorias-Java/tree/master/herencia'},
-      {text:'Arrglos Lineales', url:'#'}];
+      {text:'Arrglos Lineales', url:'#'},
+      {text:'private, public y protected', url: '#'}];
  
     $scope.addTodo = function() {
       $scope.todos.push({text:$scope.todoText, done:false});
