@@ -4,7 +4,7 @@ angular.module('todoApp', [])
       {text:'Aprender react.js', done:false, url:'#'}];
      $scope.doneThings = [
       {text:'Caca de vaca', url:'#'}];
- 
+
     $scope.addTodo = function() {
       $scope.todos.push({text:$scope.todoText, done:false});
       $scope.todoText = '';
