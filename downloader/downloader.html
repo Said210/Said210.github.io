@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>LIST</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+</head>
+<body>
+
+	<h3 id="showing"></h3>
+	<table class="table table-striped">
+		<tbody rabbits-repeat="references">
+			<tr>
+				<td>{$index}</td>
+				<td>[references.ref]</td>
+				<td>[references.desc]</td>
+				<td><button  class="btn btn-outline-primary" onclick="show('{$index}')">Abir</td>
+			</tr>
+		</tbody>
+	</table>
+</body>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+<script src="rabbits.js"></script>
+<script src="data.js"></script>
+<script>
+var w_google;
+var w_gallery;
+function show(key_p) {
+	var key = (key_p == undefined || key_p == null) ? document.getElementById('key').value : key_p; 
+	var google = "https://www.google.com.mx/search?q="+references[key].ref+"&tbm=isch&biw=1000&bih=600";
+	var gallery = "https://perfumegallery.herokuapp.com/images_from_ref/"+references[key].ref+"/edit";
+	document.getElementById('showing').innerHTML = "Showing "+ references[key].desc;
+	var w_google = open(google, "_blank");
+	var w_gallery = open(gallery, "_blank");
+}
+rabbit = new rabbitsModule();
+rabbit.init();
+</script>
+</html>
